@@ -18,14 +18,6 @@ EOT
   validation {
     condition = alltrue([
       for k, v in var.management_locks : (
-        length(v.name) < 260
-      )
-    ])
-    error_message = "[from validate.ManagementLockName: invalid when len(value) >= 260]"
-  }
-  validation {
-    condition = alltrue([
-      for k, v in var.management_locks : (
         v.notes == null || (length(v.notes) >= 0 && length(v.notes) <= 512)
       )
     ])
